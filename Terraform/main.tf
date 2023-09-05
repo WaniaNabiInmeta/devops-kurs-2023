@@ -21,5 +21,11 @@ resource "azurerm_linux_web_app" "example" {
   location            = azurerm_service_plan.example.location
   service_plan_id     = azurerm_service_plan.example.id
 
-  site_config {}
+  site_config {
+    app_command_line = "node server.js"
+
+    application_stack {
+        node_version = "18-lts"
+    }
+  }
 }
